@@ -1,0 +1,29 @@
+.container{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+.container button{
+    background-color: rgba(17, 127, 216, 0.968);
+    height: 40px;
+    width: 120px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+
+}
+
+.container button:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
