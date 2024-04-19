@@ -15,7 +15,20 @@ const Detail = ({innerForm,setInnerForm}) => {
    setData({...data,
     [e.target.name] : e.target.value})
   }
-
+  
+  const isPerfect = (data)=>{
+      const{email,phone,DOB}=data;
+      if(email&&phone&&DOB){
+        alert("Form Submitted Successfully");
+        setInnerForm(false)
+        console.log(data)
+      }
+      else{
+        console.log("false")
+        return false
+      }
+  }
+  
   const handleCheck = (e)=>{
 
     if(data.email !== ""){
@@ -23,24 +36,22 @@ const Detail = ({innerForm,setInnerForm}) => {
       if(!email.includes("@")){
        alert(`Please include '@' in the email address.'${email}' is missing an '@`)
       }
-      else{
+    
        if(email.indexOf("@")){
          if(email.indexOf("@")<=0){
            alert(`Please include '@' in the email address. '${email}' is missing an '@`)
+           return false
          }
-         else{
-           console.log("corret mail")
-         }
-       }
-      }
+        }
+      
 
       if(data.phone !== ""){
         let phone = parseInt(data.phone);
         //console.log(`phone number is ${phone} and it's type is ${typeof(phone)}`)
-        if(phone === !NaN || phone.toString().length < 10 || phone.toString().length > 10){
+        if(phone === isNaN || phone.toString().length < 10 || phone.toString().length > 10){
           alert("Invaild phone number. Please enter a 10-digit phone number")
+          return false
         }
-        
       }
 
       if(data.DOB !==""){
@@ -48,16 +59,11 @@ const Detail = ({innerForm,setInnerForm}) => {
              let selectedDob = new Date(data.DOB)
              if (selectedDob > currDate){
               alert("Invalid date of birth. Date of birth cannot be in the future.")
+              return false
              }
+             
       }
-
-      if(data.email&&data.phone&&data.DOB){
-        alert("  Form submitted successfully")
-        console.log(data)
-        setInnerForm(false)
-        
-      }
-
+         isPerfect(data);
     }
      
   }
